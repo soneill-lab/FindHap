@@ -37,4 +37,4 @@ newYSPed_data<- data.frame(newdataYSPed$Sex, newdataYSPed$Animal_ID, newdataYSPe
 
 colnames(newYSPed_data) <- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
 
-Write.table(newYSPed_data, file= "YorkshirePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
+write.table(newYSPed_data, file= "YorkshirePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
