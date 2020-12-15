@@ -19,3 +19,5 @@ newdataLRPed<- x[order(x$Birthday),]
 #Remove row names and save with write.table: 
 write.table(newdataLRPed, file= "newdataLRPed", append=FALSE, quote= FALSE, sep= " ", row.names=FALSE, col.names= TRUE)
 
+#Reorder columns in format that corresponds to findhap.f90 
+
