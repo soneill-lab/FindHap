@@ -1,6 +1,7 @@
 #FindHap is used to impute missing genotypes in the genotype files for Landrace and Yorkshire swine breeds 
-#Before running FindHap, we must make sure that our data formats align appropriately. 
-#Have renamed 50K_Porcine_SNP_Data as "Chromosome.data" 
+#Before running FindHap, we must make sure that our data formats align appropriately using R. 
+***********************************************************************************************************************************************************************************
+#Landrace Pedigree File file format conversion
 
 #Landrace Pedigree file must be ordered in ascending order of birthday; oldest to youngest animal;
 x<- read.table("pedigree.file") 
@@ -23,5 +24,17 @@ colnames(newLRPed_data) <- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Anim
 
 Write.table(newLRPed_data, file= "LandracePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
 
+***********************************************************************************************************************************************************************************
 
+#Will convert Yorkshire pedigree file in same way as Landrace 
+x<- read.table("pedigreeYorkshire.txt")
 
+colnames(x)[colnames(x) %in% c("V1", "V2", "V3", "V4", "V5")]<- c("Animal_ID", "Sire", "Dam", "Birthday", "Sex")
+
+newdataYSPed<- x[order(x$Birthday),]
+
+newYSPed_data<- data.frame(newdataYSPed$Sex, newdataYSPed$Animal_ID, newdataYSPed$Sire, newdataYSPed$Dam, newdataYSPed$Birthday, newdataYSPed$Animal_ID, newdataYSPed$Animal_ID)
+
+colnames(newYSPed_data) <- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
+
+Write.table(newLRPed_data, file= "LandracePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
