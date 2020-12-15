@@ -13,11 +13,12 @@ colnames(x)
 colnames(x)[colnames(x) %in% c("V1", "V2", "V3", "V4", "V5")]<- c("Animal_ID", "Sire", "Dam", "Birthday", "Sex") 
 # names are based on format provided in README document pertaining to the swine data files 
 
-#Remove row names with write.table: 
-write.table(x, append=FALSE, quote= FALSE, sep= " ", row.names=FALSE, col.names= TRUE)
-
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
 newdataLRPed<- x[order(x$Birthday),]
+
+#Remove row names with write.table: 
+write.table(newdataLRPed, append=FALSE, quote= FALSE, sep= " ", row.names=FALSE, col.names= TRUE)
+
 
 #Save new ordered Landrace Pedigree file with: 
 save(newdataLRPed, file= "newdataLRPed")
