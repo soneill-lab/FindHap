@@ -9,7 +9,6 @@ x<- read.table("pedigree.file")
 colnames(x)
 
 #Rename columns appropriately with:
-pri
 colnames(x)[colnames(x) %in% c("V1", "V2", "V3", "V4", "V5")]<- c("Animal_ID", "Sire", "Dam", "Birthday", "Sex") 
 # names are based on format provided in README document pertaining to the swine data files 
 
@@ -20,4 +19,8 @@ newdataLRPed<- x[order(x$Birthday),]
 write.table(newdataLRPed, file= "newdataLRPed", append=FALSE, quote= FALSE, sep= " ", row.names=FALSE, col.names= TRUE)
 
 #Reorder columns in format that corresponds to findhap.f90 
+newLRPed_data<- data.frame(newdataLRPed$Sex, newdataLRPed$Animal_ID, newdataLRPed$Sire, newdataLRPed$Dam, newdataLRPed$Animal_ID, newdataLRPed$Animal_ID)
+
+#Rename columns appropriately according to acceptable data format:
+colnames(newLRPed_data) <- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
 
