@@ -21,3 +21,4 @@ newdataLRPed<- x[order(x$Birthday),]
 
 #Save new ordered Landrace Pedigree file with: 
 save(newdataLRPed, file= "newdataLRPed")
+#New Pedigree file is saved as a binary file, must convert to a csv file.
