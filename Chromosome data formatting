@@ -8,9 +8,9 @@ colnames(chromosome.data)<- c("chrome", "SNPname", "location")
 list(chromosome.data, sort("location"))
 list(chromsome.data, sort("chrome"))
 
-#install tidyverse package 
-install.packages("tidyverse")
-library(tidyverse)
+#install dplyr package 
+install.packages("dplyr")
+library(dplyr)
 
 #Rearrange order of columns to appropriate format 
 chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location")
@@ -20,4 +20,20 @@ chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location")
 #Add within, overall, and Chip# column 
 #Adding within column first 
 chromosome.data<- mutate(chromosome.data, within=SNPname)
+
+#Create chip# as a variable 
+chip1<- 1 
+
+#Add chip1 column 
+chromosome.data<- mutate(chromosome.data, chip1)
+
+#Create overall as a variable 
+Overall<- rownames(chromosome.data)
+
+#Add overall column
+chromosome.data<- mutate(chromosome.data, overall)
+
+#Rearrange order of columns again 
+chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within", "overall", "location", "chip1")
+
 
