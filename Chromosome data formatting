@@ -1,0 +1,20 @@
+#Establish .map file as chromosome data variable 
+chromosome.data<- read.table("chromosome.data")
+
+#Specify column names 
+colnames(chromosome.data)<- c("chrome", "SNPname", "location")
+
+#Sort position and chromosome number in ascending order 
+list(chromosome.data, sort("location"))
+list(chromsome.data, sort("chrome"))
+
+#install dplyr package 
+install.packages("dplyr")
+library(dplyr)
+
+#Rearrange order of columns to appropriate format 
+chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location")
+
+#Rename SNPname column to "SNP(number)"
+
+#Add within, overall, and Chip# column 
