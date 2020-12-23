@@ -34,6 +34,6 @@ Overall<- rownames(chromosome.data)
 chromosome.data<- mutate(chromosome.data, Overall)
 
 #Rearrange order of columns again 
-chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within", "overall", "location", "chip1")
+chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within", "Overall", "location", "chip1")
 
 
