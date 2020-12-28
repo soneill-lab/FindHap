@@ -19,7 +19,7 @@ chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location")
 
 #Add within, overall, and Chip# column 
 #Adding within column first 
-chromosome.data<- mutate(chromosome.data, within=SNPname)
+chromosome.data<- mutate(chromosome.data, within=Overall)
 
 #Create chip# as a variable 
 chip1<- 1 
