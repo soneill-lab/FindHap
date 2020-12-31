@@ -17,9 +17,9 @@ colnames(Landracepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthday", "Sex
 Landracepedigree.file<- Landracepedigree.file[order(Landracepedigree.file$Birthday),]
 
 #Add on two duplicate columns of Animal_ID to serve as Animal# and Animal_Name
-
+Animal_ID<- pull(Landracepedigree.file, Animal_ID)
 y<- Animal_ID
-z-<- Animal_ID
+z<- Animal_ID
 Landracepedigree.file<- mutate(Landracepedigree.file, y)
 Landracepedigree.file<- mutate(Landracepedigree.file, z)
 
