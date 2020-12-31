@@ -4,7 +4,7 @@
 #Landrace Pedigree File file format conversion
 
 #Landrace Pedigree file must be ordered in ascending order of birthday; oldest to youngest animal;
-Landracepedigree.file- read.table("pedigree.file") 
+Landracepedigree.file<- read.table("pedigree.file") 
 
 #Check names of columns with: 
 colnames(Landracepedigree.file)
