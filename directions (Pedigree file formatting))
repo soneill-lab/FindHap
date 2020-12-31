@@ -34,8 +34,31 @@ Animal_ID<- as.factor(as.character(Animal_ID))
 Animal_ID<- as.numeric(as.factor(Animal_ID))
 
 #Remove current character columns to replace with new numeric columns w "select" command
+Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Sire", "Dam", "Birthdate")
+
+#Recreate the Animal_ID y and z variable with the new numeric variable with: 
+y<- Animal_ID
+z<- Animal_ID
+
+Landracepedigree.file<- mutate(Landracepedigree.file, Animal_ID)
+Landracepedigree.file<- mutate(Landracepedigree.file, y) 
+Landracepedigree.file<- mutate(Landracepedigree,file, z)
+
 
 #Convert Sire and Dam names from character to numeric in same manner 
+Sire<- pull(Landracepedigree.file, Sire)
+Dam<- pull(Landracepedigree.file, Dam) 
+
+Sire<- as.factor(as.character(Sire))
+Dam<- as.factor(as.character(Dam))
+
+Sire<- as.numeric(as.factor(Sire))
+Dam<- as.numeric(as.factor(Dam))
+
+#Remove Sire and Dam character columns and replace with numeric columns 
+Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal#", "Birthdate", "Animal_Name")
+Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Sire", "Animal#", "Dam", "Birthdate", "Animal_Name")
+
 
 Write.table(Landracepedigree.file, file= "LandracePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
 
