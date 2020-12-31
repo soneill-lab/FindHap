@@ -42,7 +42,7 @@ z<- Animal_ID
 
 Landracepedigree.file<- mutate(Landracepedigree.file, Animal_ID)
 Landracepedigree.file<- mutate(Landracepedigree.file, y) 
-Landracepedigree.file<- mutate(Landracepedigree,file, z)
+Landracepedigree.file<- mutate(Landracepedigree.file, z)
 
 
 #Convert Sire and Dam names from character to numeric in same manner 
