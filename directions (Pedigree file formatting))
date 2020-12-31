@@ -29,7 +29,12 @@ Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_ID", "Sire"
 #Rename columns appropriately according to acceptable data format:
 colnames(Landracepedigree.file) <- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
 
-#Convert Animal#, Animal_ID, and Animal_Name into numeric form 
+#Convert Animal#, Animal_ID, and Animal_Name into numeric variable
+Animal_ID<- as.factor(as.character(Animal_ID))
+
+#Remove current character columns to replace with new numeric columns w "select" command
+
+#Convert Sire and Dam names from character to numeric in same manner 
 
 Write.table(Landracepedigree.file, file= "LandracePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
 
