@@ -16,12 +16,21 @@ library(dplyr)
 chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location")
 
 #Rename SNPname column to "SNP(number)"
+SNPname<- pull(chromosome.data, SNPName)
+SNPname<- as.factor(SNPname)
+SNPname<- as.numeric(as.factor(SNPname))
+
+#Remove current character SNPname column to make room to add the numeric SNPname column
+chromosome.data<- select(chromosome.data, "chrome", "Overall", "location", "chip1")
+
+#Add numeric SNPname column
+mutate(chromosome.data, SNPname)
 
 #Add within, overall, and Chip# column 
 #Adding within column first 
 chromosome.data<- mutate(chromosome.data, within=Overall)
 
-#Create chip# as a variable 
+#Create chip1 as a variable 
 chip1<- 1 
 
 #Add chip1 column 
