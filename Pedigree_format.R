@@ -10,7 +10,7 @@ Landracepedigree.file<- read.table("pedigree.file")
 colnames(Landracepedigree.file)
 
 #Rename columns appropriately with:
-colnames(Landracepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthday", "Sex") 
+colnames(Landracepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthdate", "Sex") 
 # names are based on format provided in README document pertaining to the swine data files 
 
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
