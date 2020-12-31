@@ -14,7 +14,7 @@ colnames(Landracepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthdate", "Se
 # names are based on format provided in README document pertaining to the swine data files 
 
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
-Landracepedigree.file<- Landracepedigree.file[order(Landracepedigree.file$Birthday),]
+Landracepedigree.file<- Landracepedigree.file[order(Landracepedigree.file$Birthdate),]
 
 #Add on two duplicate columns of Animal_ID to serve as Animal# and Animal_Name
 Animal_ID<- pull(Landracepedigree.file, Animal_ID)
