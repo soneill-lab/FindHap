@@ -4,37 +4,49 @@
 #Landrace Pedigree File file format conversion
 
 #Landrace Pedigree file must be ordered in ascending order of birthday; oldest to youngest animal;
-x<- read.table("pedigree.file") 
+Landracepedigree.file- read.table("pedigree.file") 
 
 #Check names of columns with: 
-colnames(x)
+colnames(Landracepedigree.file)
 
 #Rename columns appropriately with:
-colnames(x)[colnames(x) %in% c("V1", "V2", "V3", "V4", "V5")]<- c("Animal_ID", "Sire", "Dam", "Birthday", "Sex") 
+colnames(Landracepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthday", "Sex") 
 # names are based on format provided in README document pertaining to the swine data files 
 
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
-newdataLRPed<- x[order(x$Birthday),]
+Landracepedigree.file<- Landracepedigree.file[order(Landracepedigree.file$Birthday),]
+
+#Add on two duplicate columns of Animal_ID to serve as Animal# and Animal_Name
+
+y<- Animal_ID
+z-<- Animal_ID
+Landracepedigree.file<- mutate(Landracepedigree.file, y)
+Landracepedigree.file<- mutate(Landracepedigree.file, z)
 
 #Reorder columns in format that corresponds to findhap.f90 
-newLRPed_data<- data.frame(newdataLRPed$Sex, newdataLRPed$Animal_ID, newdataLRPed$Sire, newdataLRPed$Dam, newdataLRPed$Birthday, newdataLRPed$Animal_ID, newdataLRPed$Animal_ID)
+Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_ID", "Sire", "Dam", "Birthdate", "y","z")
 
 #Rename columns appropriately according to acceptable data format:
-colnames(newLRPed_data) <- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
+colnames(Landracepedigree.file) <- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
 
-Write.table(newLRPed_data, file= "LandracePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
+#Convert Animal#, Animal_ID, and Animal_Name into numeric form 
+
+Write.table(Landracepedigree.file, file= "LandracePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
 
 ***********************************************************************************************************************************************************************************
 
 #Will convert Yorkshire pedigree file in same way as Landrace 
-x<- read.table("pedigreeYorkshire.txt")
+Yorkshirepedigree.file<- read.table("pedigreeYorkshire.txt")
 
-colnames(x)[colnames(x) %in% c("V1", "V2", "V3", "V4", "V5")]<- c("Animal_ID", "Sire", "Dam", "Birthday", "Sex")
+colnames(Yorkshirepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthday", "Sex")
 
-newdataYSPed<- x[order(x$Birthday),]
+Yorkshirepedigree.file<- Yorkshirepedigree.file[order(x$Birthday),]
+Yorkshirepedigree.file<- mutate(Yorkshirepedigree.file, y)
+Yorkshirepedigree.file<- mutate(Yorkshirepedigree.file, z)
+Yorkshirepedigree.file<- select(Yorkshirepedigree.file, "Sex", "Animal#", "Sire", "Dam", "Birthday", "y", "z")
 
-newYSPed_data<- data.frame(newdataYSPed$Sex, newdataYSPed$Animal_ID, newdataYSPed$Sire, newdataYSPed$Dam, newdataYSPed$Birthday, newdataYSPed$Animal_ID, newdataYSPed$Animal_ID)
+colnames(Yorkshirepedigree.file) <- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
 
-colnames(newYSPed_data) <- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
+write.table(Yorkshirepedigree.file, file= "YorkshirePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
 
-write.table(newYSPed_data, file= "YorkshirePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
+#Convert Animal#, Animal_ID, and Animal_Name into numeric form
