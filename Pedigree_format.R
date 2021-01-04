@@ -61,7 +61,7 @@ Sire<- as.numeric(as.factor(Sire))
 Dam<- as.numeric(as.factor(Dam))
 
 #Remove Sire and Dam character columns and replace with numeric columns 
-Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal#", "Birthdate", "Animal_Name")
+Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal#", "Birthdate", "Animal_ID", "Animal_Name")
 
 Landracepedigree.file<- mutate(Landracepedigree.file, Sire)
 Landracepedigree.file<- mutate(Landracepedigree.file, Dam)
