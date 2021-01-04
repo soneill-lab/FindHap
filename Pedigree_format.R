@@ -66,15 +66,17 @@ Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal#", "Birthda
 Landracepedigree.file<- mutate(Landracepedigree.file, Sire)
 Landracepedigree.file<- mutate(Landracepedigree.file, Dam)
 
-Landracepedigree.file<- select(Landracepedigree.file, "Sex","Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
+Landracepedigree.file<- select(Landracepedigree.file, "Sex","Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
 
 #Remove and Replace Animal# column with numeric 
 
 Landracepedigree.file<- select(Landracepedigree.file, "Sex","Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
-Landracepedigree.file<- mutate(Landracepedigree.file, Animal_ID)
+
+Animal_Num<- Animal_ID 
+Landracepedigree.file<- mutate(Landracepedigree.file, Animal_Num)
                                
-Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_ID", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")   
-colnames(Landracepedigree.file)<- c(Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")               
+Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")   
+              
                            
 Write.table(Landracepedigree.file, file= "LandracePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
 
