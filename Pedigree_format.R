@@ -48,6 +48,7 @@ Landracepedigree.file<- mutate(Landracepedigree.file, Animal_ID)
 Landracepedigree.file<- mutate(Landracepedigree.file, y) 
 Landracepedigree.file<- mutate(Landracepedigree.file, z)
 
+colnames(Landracepedigree.file)<- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
 
 #Convert Sire and Dam names from character to numeric in same manner 
 Sire<- pull(Landracepedigree.file, Sire)
