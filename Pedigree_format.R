@@ -16,6 +16,10 @@ colnames(Landracepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthdate", "Se
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
 Landracepedigree.file<- Landracepedigree.file[order(Landracepedigree.file$Birthdate),]
 
+#Install dplyr package
+install.packages("dplyr")
+library(dplyr)
+
 #Add on two duplicate columns of Animal_ID to serve as Animal# and Animal_Name
 Animal_ID<- pull(Landracepedigree.file, Animal_ID)
 y<- Animal_ID
