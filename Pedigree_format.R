@@ -75,10 +75,22 @@ Landracepedigree.file<- select(Landracepedigree.file, "Sex","Sire", "Dam", "Birt
 Animal_Num<- Animal_ID 
 Landracepedigree.file<- mutate(Landracepedigree.file, Animal_Num)
                                
-Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")   
-              
-                           
-write.table(Landracepedigree.file, file= "LandracePedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
+Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name") 
+
+#Convert 0,1,2 to F,M F respectively 
+Sex<- pull(Landracepedigree.file, Sex)
+class(Sex)= integer; #Must change to factor and assign levels accordingly 
+Sex<- as.factor(as.integer(Sex))
+levels(Sex)= 0,1,2
+levels(Sex)<- c("F", "M", "F")
+
+#Remove existing Sex column and replace with factored version 
+Landracepedigree.file<- select(Landracepedigree.file, "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
+Landracepedigree.file<- mutate(Landracepedigree.file, Sex)
+Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
+    
+
+write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
 
 ***********************************************************************************************************************************************************************************
 
