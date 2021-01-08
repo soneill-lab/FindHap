@@ -47,7 +47,7 @@ chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within", "Overal
 within<- Overall 
 chromosome.data<- select(chromosome.data, "SNPname", "chrome","Overall", "location", "chip1")
 chromosome.data<- mutate(chromosome.data, within) 
-chromosome.data<- select(chromosome.data, "SNPname", "chrome","Overall", "location", "chip1")
+chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within", "Overall", "location", "chip1")
 
 
 
