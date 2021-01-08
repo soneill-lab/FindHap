@@ -24,11 +24,9 @@ SNPname<- as.numeric(as.factor(SNPname))
 chromosome.data<- select(chromosome.data, "chrome", "Overall", "location", "chip1")
 
 #Add numeric SNPname column
-mutate(chromosome.data, SNPname)
+chromosome.data<- mutate(chromosome.data, SNPname)
 
 #Add within, overall, and Chip# column 
-#Adding within column first 
-chromosome.data<- mutate(chromosome.data, within=Overall)
 
 #Create chip1 as a variable 
 chip1<- 1 
@@ -44,5 +42,13 @@ chromosome.data<- mutate(chromosome.data, Overall)
 
 #Rearrange order of columns again 
 chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within", "Overall", "location", "chip1")
+
+#Remove column "within" and replace with proper column; Create within as a variable equal to Overall column 
+within<- Overall 
+chromosome.data<- select(chromosome.data, "SNPname", "chrome","Overall", "location", "chip1")
+chromosome.data<- mutate(chromosome.data, within) 
+chromosome.data<- select(chromosome.data, "SNPname", "chrome","Overall", "location", "chip1")
+
+
 
 
