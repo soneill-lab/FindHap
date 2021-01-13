@@ -35,7 +35,7 @@ chip1<- 1
 chromosome.data<- mutate(chromosome.data, chip1)
 
 #Create overall as a variable 
-Overall<- nrows(chromosome.data)
+Overall<- rownames(chromosome.data)
 
 #Add overall column
 chromosome.data<- mutate(chromosome.data, Overall)
