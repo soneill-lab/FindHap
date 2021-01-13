@@ -9,8 +9,8 @@ chromosome.data<- read.table("chromosome.data")
 colnames(chromosome.data)<- c("chrome", "SNPname", "location")
 
 #Sort position and chromosome number in ascending order 
-list(chromosome.data, sort("location"))
-list(chromosome.data, sort("chrome"))
+chromosome.data<- list(chromosome.data, sort("location"))
+chromosome.data<- list(chromosome.data, sort("chrome"))
 
 
 
