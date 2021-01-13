@@ -18,7 +18,7 @@ list(chromosome.data, sort("chrome"))
 chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location")
 
 #Rename SNPname column to "SNP(number)"
-SNPname<- pull(chromosome.data, SNPName)
+SNPname<- pull(chromosome.data, SNPname)
 SNPname<- as.factor(SNPname)
 SNPname<- as.numeric(as.factor(SNPname))
 
