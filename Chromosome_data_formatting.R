@@ -40,11 +40,10 @@ Overall<- rownames(chromosome.data)
 #Add overall column
 chromosome.data<- mutate(chromosome.data, Overall)
 
-#Create "within" as a variable equal to Overall column
-within<- Overall
+#Create "within" as a particular sequence of numbers that will change dependent on chrome # 
+chromosome.data$within <- sequence(rle(chromosome.data$chrome)$lengths)
 
-#Add within column
-chromosome.data<- mutate(chromosome.data, within)
+#Order columns appropriately
 chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within","Overall", "location", "chip1")
 
 
