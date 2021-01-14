@@ -2,7 +2,10 @@
 #Before running FindHap, we must make sure that our data formats align appropriately using R. 
 ***********************************************************************************************************************************************************************************
 #Landrace Pedigree File file format conversion
-
+#Install dplyr package
+install.packages("dplyr")
+library(dplyr
+        
 #Landrace Pedigree file must be ordered in ascending order of birthday; oldest to youngest animal;
 Landracepedigree.file<- read.table("pedigree.file") 
 
@@ -16,9 +19,6 @@ colnames(Landracepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthdate", "Se
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
 Landracepedigree.file<- Landracepedigree.file[order(Landracepedigree.file$Birthdate),]
 
-#Install dplyr package
-install.packages("dplyr")
-library(dplyr)
 
 #Add on two duplicate columns of Animal_ID to serve as Animal# and Animal_Name
 Animal_ID<- pull(Landracepedigree.file, Animal_ID)
