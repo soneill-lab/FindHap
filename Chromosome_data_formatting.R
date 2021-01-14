@@ -23,7 +23,7 @@ SNPname<- as.factor(SNPname)
 SNPname<- as.numeric(as.factor(SNPname))
 
 #Remove current character SNPname column to make room to add the numeric SNPname column
-chromosome.data<- select(chromosome.data, "chrome", "Overall", "location")
+chromosome.data<- select(chromosome.data, "chrome", "location")
 
 #Add numeric SNPname column
 chromosome.data<- mutate(chromosome.data, SNPname)
