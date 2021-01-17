@@ -86,7 +86,8 @@ Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire
 
 #Convert 0,1,2 to F,M F respectively 
 Sex<- pull(Landracepedigree.file, Sex)
-class(Sex)= integer; #Must change to factor and assign levels accordingly 
+
+#Must change to factor and assign levels accordingly 
 Sex<- as.factor(as.integer(Sex))
 levels(Sex)= 0,1,2
 levels(Sex)<- c("F", "M", "F")
