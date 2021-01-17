@@ -2,8 +2,14 @@
 #Before running FindHap, we must make sure that our data formats align appropriately using R. 
 
 #Landrace Pedigree File file format conversion
+
+#Set CRAN repository 
+r = getOption("repos")
+r["CRAN"] = "http://cran.us.r-project.org"
+options(repos = r)
+
 #Install dplyr package
-install.packages("dplyr", repos = "http://cran.us.r-project.org")
+install.packages("dplyr")
 library(dplyr)
 
         
