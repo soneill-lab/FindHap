@@ -73,7 +73,7 @@ Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal#", "Birthda
 Landracepedigree.file<- mutate(Landracepedigree.file, Sire)
 Landracepedigree.file<- mutate(Landracepedigree.file, Dam)
 
-Landracepedigree.file<- select(Landracepedigree.file, "Sex","Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
+Landracepedigree.file<- select(Landracepedigree.file, "Sex","Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
 
 #Remove and Replace Animal# column with numeric 
 
