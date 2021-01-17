@@ -4,7 +4,9 @@
 #Landrace Pedigree File file format conversion
 #Install dplyr package
 install.packages("dplyr")
-library(dplyr
+CRAN:70
+library(dplyr)
+
         
 #Landrace Pedigree file must be ordered in ascending order of birthday; oldest to youngest animal;
 Landracepedigree.file<- read.table("pedigree.file") 
