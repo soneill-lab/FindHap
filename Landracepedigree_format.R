@@ -3,8 +3,7 @@
 
 #Landrace Pedigree File file format conversion
 #Install dplyr package
-install.packages("dplyr")
-chooseCRANmirror(70)
+install.packages("dplyr", repos = "http://cran.us.r-project.org")
 library(dplyr)
 
         
