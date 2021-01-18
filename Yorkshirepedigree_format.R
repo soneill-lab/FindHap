@@ -1,7 +1,7 @@
 #FindHap is used to impute missing genotypes in the genotype files for Landrace and Yorkshire swine breeds 
 #Before running FindHap, we must make sure that our data formats align appropriately using R. 
 
-#Landrace Pedigree File file format conversion
+#Yorkshire Pedigree File file format conversion
 
 #Set CRAN repository 
 r = getOption("repos")
