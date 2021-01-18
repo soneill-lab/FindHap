@@ -13,7 +13,7 @@ install.packages("dplyr")
 library(dplyr)
 
         
-#Landrace Pedigree file must be ordered in ascending order of birthday; oldest to youngest animal;
+#Yorkshire Pedigree file must be ordered in ascending order of birthday; oldest to youngest animal;
 Yorkshirepedigree.file<- read.table("YorkshirePedigree.txt") 
 
 #Check names of columns with: 
