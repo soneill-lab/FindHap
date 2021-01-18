@@ -81,7 +81,7 @@ Yorkshirepedigree.file<- select(Yorkshirepedigree.file, "Sex","Sire", "Dam", "Bi
 Animal_Num<- Animal_ID 
 Yorkshirepedigree.file<- mutate(Yorkshirepedigree.file, Animal_Num)
                                
-Yorkhirepedigree.file<- select(Yorkshirepedigree.file, "Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name") 
+Yorkshirepedigree.file<- select(Yorkshirepedigree.file, "Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name") 
 
 #Convert 0,1,2 to F,M F respectively 
 Sex<- pull(Yorkshirepedigree.file, Sex)
