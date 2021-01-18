@@ -89,7 +89,7 @@ Sex<- pull(Landracepedigree.file, Sex)
 
 #Must change to factor and assign levels accordingly 
 Sex<- as.factor(as.integer(Sex))
-levels(Sex)= 0,1,2
+levels(Sex)= c("0","1","2")
 levels(Sex)<- c("F", "M", "F")
 
 #Remove existing Sex column and replace with factored version 
