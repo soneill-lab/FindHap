@@ -14,7 +14,7 @@ library(dplyr)
 
         
 #Yorkshire Pedigree file must be ordered in ascending order of birthday; oldest to youngest animal;
-Yorkshirepedigree.file<- read.table("YorkshirePedigree.txt") 
+Yorkshirepedigree.file<- read.table("pedigreeYorkshire.txt") 
 
 #Check names of columns with: 
 colnames(Yorkshirepedigree.file)
