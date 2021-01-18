@@ -13,7 +13,6 @@ list(chromosome.data, sort("location"))
 list(chromosome.data, sort("chrome"))
 
 
-
 #Rearrange order of columns to appropriate format 
 chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location")
 
@@ -30,9 +29,10 @@ chromosome.data<- mutate(chromosome.data, SNPname)
 
 #Create chip1 as a variable 
 chip1<- 1 
-
+ 
 #Add chip1 column 
 chromosome.data<- mutate(chromosome.data, chip1)
+ 
 
 #Create overall as a variable 
 Overall<- rownames(chromosome.data)
