@@ -52,7 +52,7 @@ chromosome.data$within <- sequence(rle(chromosome.data$chrome)$lengths)
 chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within","Overall", "location", "chip1")
 
 #Save file 
-write.table(chromosome.data, file= chromosome.data, append=FALSE, quote=FALSE, sep=" ", row.names=FALSE, col.names=TRUE)
+write.table(chromosome.data, file= "chromosome.data", append=FALSE, quote=FALSE, sep=" ", row.names=FALSE, col.names=TRUE)
 
 
 
