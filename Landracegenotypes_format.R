@@ -8,8 +8,8 @@ install.packages("dplyr")
 library(dplyr)
 
 
-install.packages("data.frame")
-library(data.frame)
+install.packages("data.table")
+library(data.table)
 
 
 genotypes<- fread("genotypes.txt")
