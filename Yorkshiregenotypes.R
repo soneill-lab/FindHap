@@ -1,3 +1,8 @@
+#Set CRAN repository 
+r = getOption("repos")
+r["CRAN"] = "http://cran.us.r-project.org"
+options(repos = r)
+
 install.packages("dplyr")
 library(dplyr)
 install.packages("data.table")
