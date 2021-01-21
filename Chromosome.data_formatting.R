@@ -17,6 +17,11 @@ colnames(chromosome.data)<- c("chrome", "SNPname", "location")
 list(chromosome.data, sort("location"))
 list(chromosome.data, sort("chrome"))
 
+#Make "location" numeric 
+location<- pull(chromosome.data, "location")
+location<- as.numeric("location")
+
+
 
 #Rearrange order of columns to appropriate format 
 chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location")
