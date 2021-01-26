@@ -25,17 +25,14 @@ colnames(Landracepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthdate", "Se
 
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
 Landracepedigree.file<- Landracepedigree.file[order(Landracepedigree.file$Birthdate),]
-
-
-#Add on two duplicate columns of Animal_ID to serve as Animal# and Animal_Name
-Animal_ID<- pull(Landracepedigree.file, Animal_ID)
-y<- Animal_ID
-z<- Animal_ID
-Landracepedigree.file<- mutate(Landracepedigree.file, y)
-Landracepedigree.file<- mutate(Landracepedigree.file, z)
+Landracepedigree$Birthdata<- paste(Landracepedigree.file$Birthdate, "01", sep=" ")
 
 #Reorder columns in format that corresponds to findhap.f90 
 Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_ID", "Sire", "Dam", "Birthdate")
+
+Animal_Num<- pull(Landracepedigree.file, "Animal_ID")
+Animal_Name<- pull(Landracepedigree.file, "Animal_ID")
+
 *******************************************************************************************************************************************************************************
 
 numberify <- function(pedigree) {
@@ -51,16 +48,6 @@ numberify <- function(pedigree) {
 Landracepedigree.file <- numberify(Landracepedigree.file)
 
 old_id <- new_ped$key[new_ped$ped$Animal_ID]
-
-
-
-
-
-
-
-
-
-
 
 
 
