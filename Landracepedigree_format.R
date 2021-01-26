@@ -35,10 +35,37 @@ Landracepedigree.file<- mutate(Landracepedigree.file, y)
 Landracepedigree.file<- mutate(Landracepedigree.file, z)
 
 #Reorder columns in format that corresponds to findhap.f90 
-Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_ID", "Sire", "Dam", "Birthdate", "y","z")
+Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_ID", "Sire", "Dam", "Birthdate")
+*******************************************************************************************************************************************************************************
 
-#Rename columns appropriately according to acceptable data format:
-colnames(Landracepedigree.file) <- c("Sex", "Animal#", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
+numberify <- function(pedigree) {
+  ped_key <- with(pedigree, unique(c(as.character(Dam), as.character(Sire), as.character(Animal_ID))))
+  numeric_pedigree <- pedigree %>%
+    mutate(Animal_ID = as.integer(factor(Animal_ID, levels = ped_key)),
+           Dam = as.integer(factor(Dam, levels = ped_key)),
+           Sire = as.integer(factor(Sire, levels = ped_key)))
+ 
+  return(list(ped = Landracepedigree.file, key = ped_key))
+}
+
+Landracepedigree.file <- numberify(Landracepedigree.file)
+
+old_id <- new_ped$key[new_ped$ped$Animal_ID]
+
+
+
+
+
+
+
+
+
+
+
+
+
+************************************************************************************************************************************************************
+
 
 #Convert Animal#, Animal_ID, and Animal_Name into numeric variable
 Animal_ID<- as.factor(as.character(Animal_ID))
@@ -56,6 +83,9 @@ Landracepedigree.file<- mutate(Landracepedigree.file, y)
 Landracepedigree.file<- mutate(Landracepedigree.file, z)
 
 colnames(Landracepedigree.file)<- c("Sex", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal#", "Animal_Name")
+
+*********************************************************************************************************************************************************
+
 
 #Convert Sire and Dam names from character to numeric in same manner 
 Sire<- pull(Landracepedigree.file, Sire)
