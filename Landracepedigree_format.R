@@ -25,7 +25,7 @@ colnames(Landracepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthdate", "Se
 
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
 Landracepedigree.file<- Landracepedigree.file[order(Landracepedigree.file$Birthdate),]
-Landracepedigree$Birthdata<- paste(Landracepedigree.file$Birthdate, "01", sep=" ")
+Landracepedigree$Birthdate<- paste(Landracepedigree.file$Birthdate, "01", sep=" ")
 
 #Reorder columns in format that corresponds to findhap.f90 
 Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_ID", "Sire", "Dam", "Birthdate")
