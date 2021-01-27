@@ -124,7 +124,7 @@ numberify <- function(pedigree) {
            Dam = as.integer(factor(Dam, levels = ped_key)),
            Sire = as.integer(factor(Sire, levels = ped_key)),
             Animal_Num= as.integer(factor(Sire, levels = ped_key)),
-            Animal_Name=as.integer(factor(Animal_Name, levels = ped_key)) 
+            Animal_Name=as.integer(factor(Animal_Name, levels = ped_key))) 
         
   return(list(ped = Landracepedigree.file, key = ped_key))
-
+}
