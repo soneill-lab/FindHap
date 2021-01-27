@@ -23,31 +23,48 @@ colnames(Landracepedigree.file)
 colnames(Landracepedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthdate", "Sex") 
 # names are based on format provided in README document pertaining to the swine data files 
 
+#Convert 0,1,2 to F,M F respectively 
+Sex<- pull(Landracepedigree.file, Sex)
+
+#Must change to factor and assign levels accordingly 
+Sex<- as.factor(as.integer(Sex))
+levels(Sex)= c("0","1","2")
+levels(Sex)<- c("F", "M", "F")
+
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
 Landracepedigree.file<- Landracepedigree.file[order(Landracepedigree.file$Birthdate),]
-Landracepedigree.file$Birthdate<- paste(Landracepedigree.file$Birthdate, "01", sep=" ")
+Landracepedigree.file$Birthdate<- paste(Landracepedigree.file$Birthdate,"01", sep=" ")
 
 #Reorder columns in format that corresponds to findhap.f90 
+Landracepedigree.file<- select(Landracepedigree.file, "Animal_ID", "Sire", "Dam", "Birthdate")
+Landracepedigree.file<- mutate(Landracepedigree.file, Sex)
 Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_ID", "Sire", "Dam", "Birthdate")
 
 Animal_Num<- pull(Landracepedigree.file, "Animal_ID")
 Animal_Name<- pull(Landracepedigree.file, "Animal_ID")
 
-*******************************************************************************************************************************************************************************
+
+Landracepedigree.file<- mutate(Landracepedigree.file, Animal_Name) 
+Landracepedigree.file<- mutate(Landracepedigree.file, Animal_Num)
+
+Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name") 
 
 numberify <- function(pedigree) {
-  ped_key <- with(pedigree, unique(c(as.character(Dam), as.character(Sire), as.character(Animal_ID))))
+  ped_key <- with(pedigree, unique(c(as.character(Dam), as.character(Sire), as.character(Animal_ID), as.character(Animal_Num), as.character(Animal_Name))))
   numeric_pedigree <- pedigree %>%
     mutate(Animal_ID = as.integer(factor(Animal_ID, levels = ped_key)),
            Dam = as.integer(factor(Dam, levels = ped_key)),
-           Sire = as.integer(factor(Sire, levels = ped_key)))
- 
+           Sire = as.integer(factor(Sire, levels = ped_key)),
+            Animal_Num= as.integer(factor(Sire, levels = ped_key)),
+            Animal_Name=as.integer(factor(Animal_Name, levels = ped_key))) 
+        
   return(list(ped = Landracepedigree.file, key = ped_key))
 }
 
-Landracepedigree.file <- numberify(Landracepedigree.file)
+Landracepedigree.file<- numberify(Landracepedigree.file)
 
-old_id <- new_ped$key[new_ped$ped$Animal_ID]
+old_id<- Landracepedigree.file$key[Landracepedigree.file, Animal_ID]
+
 
 
 
@@ -73,17 +90,6 @@ colnames(Landracepedigree.file)<- c("Sex", "Sire", "Dam", "Birthdate", "Animal_I
 
 *********************************************************************************************************************************************************
 
-
-#Convert Sire and Dam names from character to numeric in same manner 
-Sire<- pull(Landracepedigree.file, Sire)
-Dam<- pull(Landracepedigree.file, Dam) 
-
-Sire<- as.factor(as.character(Sire))
-Dam<- as.factor(as.character(Dam))
-
-Sire<- as.numeric(as.factor(Sire))
-Dam<- as.numeric(as.factor(Dam))
-
 #Remove Sire and Dam character columns and replace with numeric columns 
 Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal#", "Birthdate", "Animal_ID", "Animal_Name")
 
@@ -101,13 +107,6 @@ Landracepedigree.file<- mutate(Landracepedigree.file, Animal_Num)
                                
 Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name") 
 
-#Convert 0,1,2 to F,M F respectively 
-Sex<- pull(Landracepedigree.file, Sex)
-
-#Must change to factor and assign levels accordingly 
-Sex<- as.factor(as.integer(Sex))
-levels(Sex)= c("0","1","2")
-levels(Sex)<- c("F", "M", "F")
 
 #Remove existing Sex column and replace with factored version 
 Landracepedigree.file<- select(Landracepedigree.file, "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
@@ -116,15 +115,3 @@ Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire
     
 
 write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
-**********************************************************************************************************************************************************************
-numberify <- function(pedigree) {
-  ped_key <- with(pedigree, unique(c(as.character(Dam), as.character(Sire), as.character(Animal_ID), as.character(Animal_Num), as.character(Animal_Name))))
-  numeric_pedigree <- pedigree %>%
-    mutate(Animal_ID = as.integer(factor(Animal_ID, levels = ped_key)),
-           Dam = as.integer(factor(Dam, levels = ped_key)),
-           Sire = as.integer(factor(Sire, levels = ped_key)),
-            Animal_Num= as.integer(factor(Sire, levels = ped_key)),
-            Animal_Name=as.integer(factor(Animal_Name, levels = ped_key))) 
-        
-  return(list(ped = Landracepedigree.file, key = ped_key))
-}
