@@ -12,20 +12,21 @@ chromosome.data<- read.table("chromosome.data")
 
 #Specify column names 
 colnames(chromosome.data)<- c("chrome", "SNPname", "location")
+**********************************************************************
+#Make "location" numeric 
+location<- pull(chromosome.data, "location")
+location=as.numeric("location")
 
+#Remove and add back proper location column
+chromosome.data<- select(chromosome.data, "SNPname", "chrome")
+chromosome.data<- mutate(chromosome.data, location)
+**********************************************************************************
 #Sort position and chromosome number in ascending order 
 list(chromosome.data, sort("location"))
 list(chromosome.data, sort("chrome"))
 
-#Make "location" numeric 
-location<- pull(chromosome.data, "location")
-location<- as.numeric("location")
-
-
-
 #Rearrange order of columns to appropriate format 
-chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location")
-
+ 
 #Rename SNPname column to "SNP(number)"
 SNPname<- pull(chromosome.data, SNPname)
 SNPname<- as.factor(SNPname)
