@@ -14,8 +14,8 @@ chromosome.data<- read.table("chromosome.data")
 colnames(chromosome.data)<- c("chrome", "SNPname", "location")
 **********************************************************************
 #Make "location" numeric 
-location<- pull(chromosome.data, "location")
-location=as.numeric("location")
+location<- pull(chromosome.data, location)
+location=as.numeric(location)
 
 #Remove and add back proper location column
 chromosome.data<- select(chromosome.data, "SNPname", "chrome")
