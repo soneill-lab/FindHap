@@ -127,3 +127,18 @@ numberify <- function(Landracepedigree.file) {
         
   return (list(ped = Landracepedigree.file, key = ped_key))
 }
+          
+         
+****************************************************************************************************************************
+
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+ 
