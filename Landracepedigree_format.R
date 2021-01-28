@@ -33,7 +33,7 @@ levels(Sex)<- c("F", "M", "F")
 
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
 Landracepedigree.file<- Landracepedigree.file[order(Landracepedigree.file$Birthdate),]
-Landracepedigree.file$Birthdate<- paste(Landracepedigree.file$Birthdate,"01", sep=" ")
+Landracepedigree.file$Birthdate<- paste(Landracepedigree.file$Birthdate,"01")
 
 #Reorder columns in format that corresponds to findhap.f90 
 Landracepedigree.file<- select(Landracepedigree.file, "Animal_ID", "Sire", "Dam", "Birthdate")
@@ -49,23 +49,21 @@ Landracepedigree.file<- mutate(Landracepedigree.file, Animal_Num)
 
 Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name") 
 
-numberify <- function(pedigree) {
-  ped_key <- with(pedigree, unique(c(as.character(Dam), as.character(Sire), as.character(Animal_ID), as.character(Animal_Num), as.character(Animal_Name))))
-  numeric_pedigree <- pedigree %>%
-    mutate(Animal_ID = as.integer(factor(Animal_ID, levels = ped_key)),
-           Dam = as.integer(factor(Dam, levels = ped_key)),
-           Sire = as.integer(factor(Sire, levels = ped_key)),
-            Animal_Num= as.integer(factor(Sire, levels = ped_key)),
-            Animal_Name=as.integer(factor(Animal_Name, levels = ped_key))) 
+numberify <- function(Landracepedigree.file) {
+  ped_key <- with(Landracepedigree.file, unique(c(as.character(Dam), as.character(Sire), as.character(Animal_ID), as.character(Animal_Num), as.character(Animal_Name))))
+  numeric_pedigree <- Landracepedigree.file %>%
+    mutate(Animal_ID <- as.integer(factor(Animal_ID, levels = ped_key)),
+           Dam <- as.integer(factor(Dam, levels = ped_key)),
+           Sire <- as.integer(factor(Sire, levels = ped_key)),
+            Animal_Num<- as.integer(factor(Sire, levels = ped_key)),
+            Animal_Name<-as.integer(factor(Animal_Name, levels = ped_key)))
         
-  return(list(ped = Landracepedigree.file, key = ped_key))
+  return (list(ped =Landracepedigree.file, key =ped_key))
 }
 
 Landracepedigree.file<- numberify(Landracepedigree.file)
 
 old_id<- Landracepedigree.file$key[Landracepedigree.file, Animal_ID]
-
-
 
 
 ************************************************************************************************************************************************************
