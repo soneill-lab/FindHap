@@ -52,13 +52,13 @@ Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire
 numberify <- function(Landracepedigree.file) {
   ped_key <- with(Landracepedigree.file, unique(c(as.character(Dam), as.character(Sire), as.character(Animal_ID), as.character(Animal_Num), as.character(Animal_Name))))
   numeric_pedigree <- Landracepedigree.file %>%
-    mutate(Animal_ID <- as.integer(factor(Animal_ID, levels = ped_key)),
-           Dam <- as.integer(factor(Dam, levels = ped_key)),
-           Sire <- as.integer(factor(Sire, levels = ped_key)),
-            Animal_Num<- as.integer(factor(Sire, levels = ped_key)),
-            Animal_Name<-as.integer(factor(Animal_Name, levels = ped_key)))
+    mutate(Animal_ID = as.integer(factor(Animal_ID, levels = ped_key)),
+           Dam = as.integer(factor(Dam, levels = ped_key)),
+           Sire = as.integer(factor(Sire, levels = ped_key)),
+            Animal_Num = as.integer(factor(Sire, levels = ped_key)),
+            Animal_Name = as.integer(factor(Animal_Name, levels = ped_key)))
         
-  return (list(ped =Landracepedigree.file, key =ped_key))
+  return (list(ped = Landracepedigree.file, key = ped_key))
 }
 
 Landracepedigree.file<- numberify(Landracepedigree.file)
@@ -113,3 +113,17 @@ Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire
     
 
 write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
+
+
+**********************************************************************************************************************************************************************
+numberify <- function(Landracepedigree.file) {
+  ped_key <- with(Landracepedigree.file, unique(c(as.character(Dam), as.character(Sire), as.character(Animal_ID), as.character(Animal_Num), as.character(Animal_Name))))
+  numeric_pedigree <- Landracepedigree.file %>%
+    cbind(Landracepedigree.file, NewColumn= "Animal_ID"= as.integer(factor(Animal_ID, levels = ped_key)),
+           (Landracepedigree.file, NewColumn="Dam"= as.integer(factor(Dam, levels = ped_key)),
+           Sire = as.integer(factor(Sire, levels = ped_key)),
+            Animal_Num = as.integer(factor(Sire, levels = ped_key)),
+            Animal_Name = as.integer(factor(Animal_Name, levels = ped_key)))
+        
+  return (list(ped = Landracepedigree.file, key = ped_key))
+}
