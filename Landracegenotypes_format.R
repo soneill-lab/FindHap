@@ -13,28 +13,27 @@ library(data.table)
 
 
 genotypes<- fread("genotypes.txt")
-
-
 names(genotypes)<- c("An_ID", "Genotypes")
 
-
 An_ID<- pull(genotypes, An_ID)
-Genotypes<- pull(genotypes, Genotypes) 
+Genotypes<- pull(genotypes, Genotypes)
 
 An_ID<- as.factor(as.character(An_ID))
 An_ID<- as.numeric(as.factor(An_ID))
-genotypes<- select(genotypes,"SNP_num", "Genotypes")
 genotypes<- mutate(genotypes, An_ID)
-
-genotypes<- select(genotypes, "An_ID","SNP_num", "Genotypes")
 
 chip<- 1 
 SNP_num<- 5000
 
+genotypes<- select(genotypes,"Genotypes")
 
 genotypes<- mutate(genotypes, chip)
 genotypes<- mutate(genotypes, SNP_num)
+genotypes<- mutate(genotypes, An_ID)
 
+
+
+genotypes<- select(genotypes, "An_ID", "chip", "SNP_num", "Genotypes")
 
 
 
