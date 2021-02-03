@@ -33,10 +33,11 @@ genotypes<- mutate(genotypes, An_ID)
 
 genotypes<- select(genotypes, "An_ID", "chip", "SNP_num")
 
+
 Genotypes<- strsplit(Genotypes, split=0, fixed=FALSE, perl=FALSE, useBytes=FALSE) 
+
 genotypes<- mutate(genotypes, Genotypes) 
 
-install.packages("rlang")
 
 write.table(genotypes, file= "Landracegenotypes.txt", append=FALSE, sep=" ", row.names=FALSE, col.names=TRUE)
 
