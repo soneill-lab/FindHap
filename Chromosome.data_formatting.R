@@ -40,22 +40,24 @@ chromosome.data<- mutate(chromosome.data, SNPname)
 
 #Create chip1 as a variable 
 chip1<- 1 
+n_chips<- 1 
  
 #Add chip1 column 
 chromosome.data<- mutate(chromosome.data, chip1)
+chromosome.data<- mutate(chromosome.data, n_chips)
  
 
 #Create overall as a variable 
-Overall<- rownames(chromosome.data)
+overall<- rownames(chromosome.data)
 
 #Add overall column
-chromosome.data<- mutate(chromosome.data, Overall)
+chromosome.data<- mutate(chromosome.data, overall)
 
 #Create "within" as a particular sequence of numbers that will change dependent on chrome # 
 chromosome.data$within <- sequence(rle(chromosome.data$chrome)$lengths)
 
 #Order columns appropriately
-chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within","Overall", "location", "chip1")
+chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within","overall", "location", "n_chips", "chip1")
 
 #Save file 
 write.table(chromosome.data, file= "chromosome.data", append=FALSE, quote=FALSE, sep=" ", row.names=FALSE, col.names=TRUE)
