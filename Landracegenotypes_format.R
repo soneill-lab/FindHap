@@ -38,6 +38,6 @@ Genotypes<- strsplit(Genotypes, split=0, fixed=FALSE, perl=FALSE, useBytes=FALSE
 
 genotypes<- mutate(genotypes, Genotypes) 
 
-
+genotypes<- as.character(genotypes$Genotypes) 
 write.table(genotypes, file= "Landracegenotypes.txt", append=FALSE, sep=" ", row.names=FALSE, col.names=TRUE)
 
