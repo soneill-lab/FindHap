@@ -68,8 +68,7 @@ Landracepedigree.file<- numberify(Landracepedigree.file)
 
 old_id<- Landracepedigree.file$key[Landracepedigree.file, Animal_ID]
 
-
-************************************************************************************************************************************************************
+###########################################################################################################
 
 
 #Convert Animal#, Animal_ID, and Animal_Name into numeric variable
@@ -117,8 +116,7 @@ Landracepedigree.file<- select(Landracepedigree.file, "Sex", "Animal_Num", "Sire
 
 write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
 
-
-**********************************************************************************************************************************************************************
+##############################################################################################################################################################
 numberify <- function(Landracepedigree.file) {
   ped_key <- with(Landracepedigree.file, unique(c(as.character(Dam), as.character(Sire), as.character(Animal_ID), as.character(Animal_Num), as.character(Animal_Name))))
   numeric_pedigree <- Landracepedigree.file %>%
@@ -131,8 +129,7 @@ numberify <- function(Landracepedigree.file) {
   return (list(ped = Landracepedigree.file, key = ped_key))
 }
           
-         
-****************************************************************************************************************************
+
 
           
           
