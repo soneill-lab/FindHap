@@ -33,7 +33,7 @@ levels(Sex)<- c("F", "M", "F")
 
 #Order the Landrace Pedigree file from oldest animal to youngest animal: 
 pedigree.file<- pedigree.file[order(pedigree.file$Birthdate),]
-pedigree.file$Birthdate<- paste(pedigree.file$Birthdate,"01")
+pedigree.file$Birthdate<- paste(pedigree.file$Birthdate,"01", sep="")
 
 #Reorder columns in format that corresponds to findhap.f90 
 pedigree.file<- select(pedigree.file, "Animal_ID", "Sire", "Dam", "Birthdate")
