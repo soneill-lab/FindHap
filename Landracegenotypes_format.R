@@ -37,6 +37,7 @@ genotypes<- select(genotypes, "An_ID", "chip", "SNP_num")
 genotypes<- mutate(genotypes, Genotypes) 
 
 genotypes$Genotypes<- strsplit(genotypes$Genotypes, split=NULL, fixed=FALSE, perl=FALSE, useBytes=FALSE) 
+genotypes$Genotypes = genotypes$Genotypes[ordered_idx,]
 
 write.table(genotypes, file= "Landracegenotypes.txt", append=FALSE, quote=FALSE, sep=" ", row.names=FALSE, col.names=TRUE)
 
