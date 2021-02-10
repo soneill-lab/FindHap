@@ -25,7 +25,8 @@ chromosome.data<- select(chromosome.data, "SNPname", "chrome")
 chromosome.data<- mutate(chromosome.data, location)
 
 #Sort position and chromosome number in ascending order
-chromosome.data<- chromosome.data[ order(chromosome.data[ ,"chrome"], chromosome.data[ ,"location"] ),]
+ordered_idx = order(chromosome.data[ ,"chrome"], chromosome.data[ ,"location"] )
+chromosome.data<- chromosome.data[ ordered_idx,]
 
 #Create overall as a variabl
 overall<- (1:49991)
