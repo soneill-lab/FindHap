@@ -36,6 +36,7 @@ genotypes<- select(genotypes, "An_ID", "chip", "SNP_num")
 
 genotypes<- mutate(genotypes, Genotypes) 
 
+genotypes<- select(genotypes, "An_ID", "chip", "SNP_num", "Genotypes")
 genotypes$Genotypes<- strsplit(genotypes$Genotypes, split=NULL, fixed=FALSE, perl=FALSE, useBytes=FALSE) 
 genotypes$Genotypes = genotypes$Genotypes[ordered_idx,]
 
