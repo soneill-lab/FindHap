@@ -53,7 +53,7 @@ numberify <- function(pedigree) {
 
 Landracepedigree.file <- numberify(pedigree.file)
 
-Landracepedigree.file_ped<- Landracepedigree.file$ped
+Landracepedigree_pedkey<- Landracepedigree.file$ped
 
 #Must add the Animal_Num and the Animal_Name columns, both equal to Animal_ID column 
 Animal_Num<- Landracepedigree.file$Animal_ID
