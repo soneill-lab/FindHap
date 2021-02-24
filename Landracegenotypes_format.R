@@ -39,6 +39,8 @@ genotypes<- mutate(genotypes, Genotypes)
 genotypes<- select(genotypes, "An_ID", "chip", "SNP_num", "Genotypes")
 genotypes$Genotypes<- strsplit(genotypes$Genotypes, split=NULL, fixed=FALSE, perl=FALSE, useBytes=FALSE) 
 
+names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
+
 for(i in 1:length(genotypes$Genotypes)){
   genotypes$Genotypes[[i]] <- genotypes$Genotypes[[i]][ordered_idx]
 }
