@@ -41,6 +41,9 @@ genotypes$Genotypes<- strsplit(genotypes$Genotypes, split=NULL, fixed=FALSE, per
 
 names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
 
+
+Genotypes<- genotypes$Genotypes 
+
 for(i in 1:length(Genotypes)){
   Genotypes[[i]] <- Genotypes[[i]][ordered_idx]
 }
