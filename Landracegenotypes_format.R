@@ -41,9 +41,15 @@ genotypes$Genotypes<- strsplit(genotypes$Genotypes, split=NULL, fixed=FALSE, per
 
 names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
 
-for(i in 1:length(genotypes$Genotypes)){
-  genotypes$Genotypes[[i]] <- genotypes$Genotypes[[i]][ordered_idx]
+for(i in 1:length(Genotypes)){
+  Genotypes[[i]] <- Genotypes[[i]][ordered_idx]
 }
+
+
+Genotypes_new<- Genotypes 
+genotypes<- mutate(genotypes,Genotypes_new)
+genotypes<- select("Animal_ID", "chip", "SNP_num", "Genotypes_new")
+names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
 
 write.table(genotypes, file= "Landracegenotypes.txt", append=FALSE, quote=FALSE, sep=" ", row.names=FALSE, col.names=TRUE)
 
