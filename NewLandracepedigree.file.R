@@ -49,9 +49,9 @@ numberify <- function(pedigree) {
            Sire = as.integer(factor(Sire, levels = ped_key)))
 }
 
-new_ped <- numberify(pedigree.file)
+Landracepedigree.file <- numberify(pedigree.file)
 
-old_id <- new_ped$key[new_ped$ped$Animal_ID]
+oldLandrace_id <- pedigree.file$Animal_ID
 
 #Must add the Animal_Num and the Animal_Name columns, both equal to Animal_ID column 
 Animal_Num<- Landracepedigree.file$Animal_ID
@@ -62,9 +62,10 @@ Landracepedigree.file<- cbind(Landracepedigree.file, Animal_Name= Animal_Name)
 
 #Rearrange columns into proper Findhap order 
 Landracepedigree.file<- select(Landracepedigree.file,"Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
-    
-
+   
 write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
+
+
 
 
 
