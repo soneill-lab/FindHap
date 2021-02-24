@@ -51,5 +51,5 @@ genotypes<- mutate(genotypes,Genotypes_new)
 genotypes<- select("Animal_ID", "chip", "SNP_num", "Genotypes_new")
 names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
 
-write.table(genotypes, file= "Landracegenotypes.txt", append=FALSE, quote=FALSE, sep=" ", row.names=FALSE, col.names=TRUE)
+save(genotypes, "Landracegenotypes.txt")
 
