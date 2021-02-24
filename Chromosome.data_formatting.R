@@ -29,7 +29,7 @@ ordered_idx = order(chromosome.data[ ,"chrome"], chromosome.data[ ,"location"] )
 chromosome.data<- chromosome.data[ordered_idx,]
 
 #Create overall as a variabl
-overall<- (1:49991)
+overall<- (1:49992)
 
 #Add overall column
 chromosome.data<- mutate(chromosome.data, overall)                                   
