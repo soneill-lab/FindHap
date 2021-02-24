@@ -33,21 +33,20 @@ overall<- (1:49991)
 
 #Add overall column
 chromosome.data<- mutate(chromosome.data, overall)                                   
-#Rearrange order of columns to appropriate format 
- 
-#Rename SNPname column to "SNP(number)"
-SNPname<- pull(chromosome.data, SNPname)
-SNPname<- as.factor(SNPname)
-SNPname<- as.numeric(as.factor(SNPname))
 
-#Remove current character SNPname column to make room to add the numeric SNPname column
-
-chromosome.data<- select(chromosome.data, "chrome","location", "overall")
-#Add numeric SNPname column
+#Alter SNPname column appropriately 
+SNPname<- "Marker"
+chromosome.data<- select(chromosome.data, "chrome", "location", "overall")
 chromosome.data<- mutate(chromosome.data, SNPname)
+chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location", "overall")
+
+SNPsequence<- 1:nrow(chromosome.data)
+chromosome.data$SNPname<- paste(chromosome.data$SNPname,SNPsequence, sep="")
+ 
+
 
 #Create chip1 as a variable 
-chip1<- 1 
+chip1<- overall 
 n_chips<- 1 
  
 #Add chip1 column 
@@ -62,7 +61,7 @@ chromosome.data$within <- sequence(rle(chromosome.data$chrome)$lengths)
 chromosome.data<- select(chromosome.data, "SNPname", "chrome", "within","overall", "location", "n_chips", "chip1")
 
 #Save file 
-write.table(chromosome.data,file= "chromosome.data2",append=FALSE, quote=FALSE, sep=" ", row.names=FALSE, col.names=TRUE)
+write.table(chromosome.data,file= "Landrace_chromosome.data",append=FALSE, quote=FALSE, sep=" ", row.names=FALSE, col.names=TRUE)
 
 
 
