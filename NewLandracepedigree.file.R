@@ -47,13 +47,11 @@ numberify <- function(pedigree) {
     mutate(Animal_ID = as.integer(factor(Animal_ID, levels = ped_key)),
            Dam = as.integer(factor(Dam, levels = ped_key)),
            Sire = as.integer(factor(Sire, levels = ped_key)))
- 
-  return(list(ped = numeric_pedigree, key = ped_key))
 }
 
-Landracepedigree.file <- numberify(pedigree.file)
+new_ped <- numberify(pedigree.file)
 
-Landracepedigree_pedkey<- Landracepedigree.file$ped
+old_id <- new_ped$key[new_ped$ped$Animal_ID]
 
 #Must add the Animal_Num and the Animal_Name columns, both equal to Animal_ID column 
 Animal_Num<- Landracepedigree.file$Animal_ID
