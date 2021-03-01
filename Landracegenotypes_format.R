@@ -52,7 +52,7 @@ for(i in 1:length(Genotypes)){
 Genotypes_new<- Genotypes 
 genotypes<- mutate(genotypes,Genotypes_new)
 genotypes<- select("Animal_ID", "chip", "SNP_num", "Genotypes_new")
-names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
+names(genotypes)<- c(genotypes,"Animal_ID", "chip", "SNP_num", "Genotypes")
 
 fwrite(genotypes, file = "Landracegenotypes.txt", append = FALSE, quote = FALSE,
   sep = "")
