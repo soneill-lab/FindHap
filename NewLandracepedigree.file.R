@@ -16,9 +16,6 @@ library(dplyr)
 #Landrace Pedigree file must be ordered in ascending order of birthday; oldest to youngest animal;
 pedigree.file<- read.table("pedigree.file") 
 
-#Check names of columns with: 
-colnames(pedigree.file)
-
 #Rename columns appropriately with:
 colnames(pedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthdate", "Sex") 
 # names are based on format provided in README document pertaining to the swine data files 
@@ -47,11 +44,13 @@ numberify <- function(pedigree) {
     mutate(Animal_ID = as.integer(factor(Animal_ID, levels = ped_key)),
            Dam = as.integer(factor(Dam, levels = ped_key)),
            Sire = as.integer(factor(Sire, levels = ped_key)))
+
+return(list(ped = numeric_pedigree, key = ped_key))
 }
 
 Landracepedigree.file <- numberify(pedigree.file)
 
-oldLandrace_id <- pedigree.file$Animal_ID
+Landracepedigree.file<- Landracepedigree.file$ped
 
 #Must add the Animal_Num and the Animal_Name columns, both equal to Animal_ID column 
 Animal_Num<- Landracepedigree.file$Animal_ID
@@ -64,7 +63,6 @@ Landracepedigree.file<- cbind(Landracepedigree.file, Animal_Name= Animal_Name)
 Landracepedigree.file<- select(Landracepedigree.file,"Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
    
 write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
-
 
 
 
