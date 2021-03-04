@@ -52,6 +52,9 @@ Landracepedigree.file <- numberify(pedigree.file)
 
 Landracepedigree.file<- Landracepedigree.file$ped
 
+
+Landracepedigree.file$Animal_ID<- (Landracepedigree.file$Animal_ID + 10000000)
+
 #Must add the Animal_Num and the Animal_Name columns, both equal to Animal_ID column 
 Animal_Num<- Landracepedigree.file$Animal_ID
 Animal_Name<- Landracepedigree.file$Animal_ID
@@ -61,7 +64,9 @@ Landracepedigree.file<- cbind(Landracepedigree.file, Animal_Name= Animal_Name)
 
 #Rearrange columns into proper Findhap order 
 Landracepedigree.file<- select(Landracepedigree.file,"Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
-   
+
+
+
 write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
 
 
