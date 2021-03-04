@@ -62,6 +62,8 @@ Animal_Name<- Landracepedigree.file$Animal_ID
 Landracepedigree.file<- cbind(Landracepedigree.file, Animal_Num= Animal_Num)
 Landracepedigree.file<- cbind(Landracepedigree.file, Animal_Name= Animal_Name)
 
+
+        
 #Rearrange columns into proper Findhap order 
 Landracepedigree.file<- select(Landracepedigree.file,"Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
 
