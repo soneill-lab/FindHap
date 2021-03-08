@@ -62,6 +62,8 @@ Animal_Name<- Landracepedigree.file$Animal_ID
 Landracepedigree.file<- cbind(Landracepedigree.file, Animal_Num= Animal_Num)
 Landracepedigree.file<- cbind(Landracepedigree.file, Animal_Name= Animal_Name)
 
+Landracepedigree.file$Sire[Landracepedigree.file$Sire==1]<- 0
+Landracepedigree.file$Dam[Landracepedigree.file$Dam==1]<- 0
 
         
 #Rearrange columns into proper Findhap order 
