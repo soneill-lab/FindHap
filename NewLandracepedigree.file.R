@@ -71,7 +71,7 @@ Landracepedigree.file<- select(Landracepedigree.file,"Sex", "Animal_Num", "Sire"
 
 
 
-write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= TRUE)
+write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= FALSE)
 
 
 
