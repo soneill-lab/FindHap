@@ -1,14 +1,7 @@
-#Set CRAN repository 
-r = getOption("repos")
-r["CRAN"] = "http://cran.us.r-project.org"
-options(repos = r)
 
-
-install.packages("dplyr")
 library(dplyr)
 
 
-install.packages("data.table")
 library(data.table)
 
 
@@ -46,8 +39,8 @@ Genotypes<- genotypes$Genotypes
 
 for(i in 1:length(Genotypes)){
   Genotypes[[i]] <- Genotypes[[i]][ordered_idx]
+  Genotypes[[i]] <- paste0(Genotypes[[i]], collapse="")
 }
-
 
 Genotypes_new<- Genotypes 
 genotypes<- mutate(genotypes,Genotypes_new)
@@ -56,6 +49,8 @@ names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
 
 genotypes$Animal_ID<- (genotypes$Animal_ID + 10000000)
 
-fwrite(genotypes, file = "Landracegenotypes.txt", append = FALSE, quote = FALSE,
-  sep = " ", , sep2= c("", "", ""), col.names=FALSE)
+
+  genotypes$Genotypes[i] <- paste0(genotypes$Genotypes[[i]], collapse="")
+
+fwrite(genotypes, file = "Landracegenotypes.txt", append = FALSE, quote = FALSE, sep = " ", col.names=FALSE)
 
