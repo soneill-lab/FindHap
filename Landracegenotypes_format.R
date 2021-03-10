@@ -55,5 +55,5 @@ genotypes<- select(genotypes,"Animal_ID", "chip", "SNP_num", "Genotypes_new")
 names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
 
 fwrite(genotypes, file = "Landracegenotypes.txt", append = FALSE, quote = FALSE,
-  sep = " ")
+  sep = "")
 
