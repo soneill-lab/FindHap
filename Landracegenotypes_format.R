@@ -50,7 +50,7 @@ names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
 genotypes$Animal_ID<- (genotypes$Animal_ID + 10000000)
 
 
-  genotypes$Genotypes[i] <- paste0(genotypes$Genotypes[[i]], collapse="")
+genotypes$Genotypes[i] <- paste0(genotypes$Genotypes[[i]], collapse="")
 
 fwrite(genotypes, file = "Landracegenotypes.txt", append = FALSE, quote = FALSE, sep = " ", col.names=FALSE)
 
