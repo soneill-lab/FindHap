@@ -26,10 +26,15 @@ chromosome.data<- mutate(chromosome.data, location)
 
 #Sort position and chromosome number in ascending order
 ordered_idx = order(chromosome.data[ ,"chrome"], chromosome.data[ ,"location"] )
+
+#Added by Jiang
+ordered_idx = ordered_idx[1:49977]
+
 chromosome.data<- chromosome.data[ordered_idx,]
 
 #Create overall as a variabl
-overall<- (1:49991)
+#Edited by Jiang
+overall<- (1:length(ordered_idx))
 
 #Add overall column
 chromosome.data<- mutate(chromosome.data, overall)                                   
