@@ -39,7 +39,7 @@ Genotypes<- genotypes$Genotypes
 
 
 for(i in 1:length(Genotypes)){
-  # ordered_idx
+  # ordered_idx from chromosome.data
   Genotypes[[i]] <- Genotypes[[i]][ordered_idx]
   Genotypes[[i]] <- paste0(Genotypes[[i]], collapse="")
 }
