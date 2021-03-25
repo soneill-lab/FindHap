@@ -7,9 +7,10 @@
 r = getOption("repos")
 r["CRAN"] = "http://cran.us.r-project.org"
 options(repos = r)
-
 #Install dplyr package
 install.packages("dplyr")
+
+#Routine start
 library(dplyr)
 
         
@@ -76,11 +77,11 @@ Landracepedigree.file<- format(Landracepedigree.file, scientific = FALSE)
 #Rearrange columns into proper Findhap order 
 Landracepedigree.file<- select(Landracepedigree.file,"Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
 
-
-
 write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= FALSE)
 
 
+#Animal IDs will be used for processing genotypes.txt. 
+Landracepedigree.file$Animal_ID
 
 
 
