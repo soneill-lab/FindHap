@@ -70,5 +70,7 @@ write.table(chromosome.data,file= "Landrace_chromosome.data",append=FALSE, quote
 
 
 
-
+#Added by Jiang
+# ordered_idx will be used for processing genotypes.txt.
+ordered_idx
 
