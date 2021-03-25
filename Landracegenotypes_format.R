@@ -39,8 +39,10 @@ Genotypes<- genotypes$Genotypes
 
 
 for(i in 1:length(Genotypes)){
+  # ordered_idx
   Genotypes[[i]] <- Genotypes[[i]][ordered_idx]
-  Genotypes[[i]] <- paste0(Genotypes[[i]], collapse="")}
+  Genotypes[[i]] <- paste0(Genotypes[[i]], collapse="")
+}
 
 Genotypes_new<- Genotypes 
 genotypes<- mutate(genotypes,Genotypes_new)
