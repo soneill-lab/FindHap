@@ -79,7 +79,7 @@ Landracepedigree.file<- select(Landracepedigree.file,"Sex", "Animal_Num", "Sire"
 
 write.table(Landracepedigree.file, file= "Landracepedigree.txt", append=FALSE, quote=FALSE, sep= " ", row.names= FALSE, col.names= FALSE)
 
-
+#Added by Jiang
 #Animal IDs will be used for processing genotypes.txt. 
 Landracepedigree.file$Animal_ID
 
