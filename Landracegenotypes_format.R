@@ -16,7 +16,7 @@ An_ID<- as.numeric(as.factor(An_ID))
 genotypes<- mutate(genotypes, An_ID)
 
 chip<- 1 
-SNP_num<- 49991
+SNP_num<- 49977
 
 genotypes<- select(genotypes,"Genotypes")
 
