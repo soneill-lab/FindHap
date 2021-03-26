@@ -63,17 +63,20 @@ Animal_Name<- Landracepedigree.file$Animal_ID
 Landracepedigree.file<- cbind(Landracepedigree.file, Animal_Num= Animal_Num)
 Landracepedigree.file<- cbind(Landracepedigree.file, Animal_Name= Animal_Name)
 
-Landracepedigree.file$Sire[Landracepedigree.file$Sire==1]<- 0
-Landracepedigree.file$Dam[Landracepedigree.file$Dam==1]<- 0
 
 
 Landracepedigree.file$Sire<- (Landracepedigree.file$Sire + 10000000)
 Landracepedigree.file$Dam<- (Landracepedigree.file$Dam + 10000000)
 
-Landracepedigree.file<- format(Landracepedigree.file, scientific = FALSE)
+
+
 
 Landracepedigree.file$Sire[Landracepedigree.file$Sire==10000000]<- 0
+
 Landracepedigree.file$Dam[Landracepedigree.file$Dam==10000000]<- 0
+
+Landracepedigree.file<- format(Landracepedigree.file, scientific = FALSE)
+
         
 #Rearrange columns into proper Findhap order 
 Landracepedigree.file<- select(Landracepedigree.file,"Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
