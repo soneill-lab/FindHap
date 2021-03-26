@@ -72,7 +72,8 @@ Landracepedigree.file$Dam<- (Landracepedigree.file$Dam + 10000000)
 
 Landracepedigree.file<- format(Landracepedigree.file, scientific = FALSE)
 
-
+Landracepedigree.file$Sire[Landracepedigree.file$Sire==10000000]<- 0
+Landracepedigree.file$Dam[Landracepedigree.file$Dam==10000000]<- 0
         
 #Rearrange columns into proper Findhap order 
 Landracepedigree.file<- select(Landracepedigree.file,"Sex", "Animal_Num", "Sire", "Dam", "Birthdate", "Animal_ID", "Animal_Name")
