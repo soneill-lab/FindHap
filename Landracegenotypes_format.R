@@ -50,14 +50,14 @@ genotypes<- mutate(genotypes,Genotypes_new)
 genotypes<- select(genotypes,"Animal_ID", "chip", "SNP_num", "Genotypes_new")
 names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
 
-genotypes$Animal_ID<- (genotypes$Animal_ID + 10000000)
+genotypes$Animal_ID<- (genotypes$Animal_ID +10000000)
 
 # Added by Jiang
 # Pad a String with Whitespace
 library(stringr)
-genotypes$Animal_ID = str_pad(genotypes$Animal_ID, width = 10, side = "left")
-genotypes$chip = str_pad(genotypes$chip, width = 9, side = "left")
-genotypes$SNP_num = str_pad(genotypes$SNP_num, width = 9, side = "left")
+genotypes$Animal_ID = str_pad(genotypes$Animal_ID, width = 10)
+genotypes$chip = str_pad(genotypes$chip, width = 9)
+genotypes$SNP_num = str_pad(genotypes$SNP_num, width = 9)
 
 
 fwrite(genotypes, file = "Landracegenotypes.txt", append = FALSE, quote = FALSE, sep = " ", col.names=FALSE)
