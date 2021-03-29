@@ -67,5 +67,5 @@ genotypes$chip = str_pad(genotypes$chip, width = 9)
 genotypes$SNP_num = str_pad(genotypes$SNP_num, width = 9)
 
 
-fwrite(genotypes, file = "Landracegenotypes.txt", append = FALSE, quote = FALSE, sep = " ", col.names=FALSE)
+fwrite(genotypes, file = "Landracegenotypes.txt", append = FALSE, quote = FALSE, sep = " ", sep2 = c("","",""), col.names=FALSE)
 
