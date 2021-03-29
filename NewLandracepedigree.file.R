@@ -71,9 +71,9 @@ Landracepedigree.file$Dam<- (Landracepedigree.file$Dam + 10000000)
 
 
 
-Landracepedigree.file$Sire[Landracepedigree.file$Sire==10000000]<- 0
+Landracepedigree.file$Sire[Landracepedigree.file$Sire==10000001]<- 0
 
-Landracepedigree.file$Dam[Landracepedigree.file$Dam==10000000]<- 0
+Landracepedigree.file$Dam[Landracepedigree.file$Dam==10000001]<- 0
 
 Landracepedigree.file<- format(Landracepedigree.file, scientific = FALSE)
 
