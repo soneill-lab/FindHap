@@ -14,7 +14,13 @@ remove_genotypes_idx<- which(genotypes_Animal_ID%in% Animal_ID_ped==FALSE)
 genotypes_Animal_ID<- genotypes_Animal_ID[- remove_genotypes_idx] 
 genotypes<- genotypes[-c(remove_genotypes_idx),]
 
-ped= data.frame(numeric= c(
+ped= data.frame(numeric= c(Animal_ID_ped_char), character=c(Animal_ID_ped_num))
+gen= c(genotypes_Animal_ID_char)
+
+h= hash(ped$character, ped$numeric)
+genotypes_numeric_idx<- values(h, keys=gen)
+
+genotypes<- mutate(genotypes, genotypes_numeric_idx)
 
 
 An_ID<- pull(genotypes, An_ID)
