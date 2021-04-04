@@ -23,12 +23,9 @@ genotypes_numeric_idx<- values(h, keys=gen)
 genotypes<- mutate(genotypes, genotypes_numeric_idx)
 
 
-An_ID<- pull(genotypes, An_ID)
 Genotypes<- pull(genotypes, Genotypes)
 
-An_ID<- as.factor(as.character(An_ID))
-An_ID<- as.numeric(as.factor(An_ID))
-genotypes<- mutate(genotypes, An_ID)
+
 
 chip<- 1 
 SNP_num<- 49977
@@ -44,7 +41,7 @@ genotypes<- select(genotypes, "An_ID", "chip", "SNP_num")
 
 genotypes<- mutate(genotypes, Genotypes) 
 
-genotypes<- select(genotypes, "An_ID", "chip", "SNP_num", "Genotypes")
+genotypes<- select(genotypes, "genotypes_numeric_idx", "chip", "SNP_num", "Genotypes")
 genotypes$Genotypes<- strsplit(genotypes$Genotypes, split=NULL, fixed=FALSE, perl=FALSE, useBytes=FALSE) 
 
 names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
