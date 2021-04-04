@@ -14,6 +14,8 @@ remove_genotypes_idx<- which(genotypes_Animal_ID%in% Animal_ID_ped==FALSE)
 genotypes_Animal_ID<- genotypes_Animal_ID[- remove_genotypes_idx] 
 genotypes<- genotypes[-c(remove_genotypes_idx),]
 
+ped= data.frame(numeric= c(
+
 
 An_ID<- pull(genotypes, An_ID)
 Genotypes<- pull(genotypes, Genotypes)
