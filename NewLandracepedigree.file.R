@@ -38,6 +38,8 @@ pedigree.file<- select(pedigree.file, "Animal_ID", "Sire", "Dam", "Birthdate")
 pedigree.file<- mutate(pedigree.file, Sex)
 pedigree.file<- select(pedigree.file, "Sex", "Animal_ID", "Sire", "Dam", "Birthdate")
 
+Animal_ID_ped_char<- pedigree.file$Animal_ID
+
 
 numberify <- function(pedigree) {
   ped_key <- with(pedigree, unique(c(as.character(Dam), as.character(Sire), as.character(Animal_ID))))
