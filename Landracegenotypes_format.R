@@ -34,7 +34,7 @@ genotypes<- select(genotypes,"Genotypes")
 
 genotypes<- mutate(genotypes, chip)
 genotypes<- mutate(genotypes, SNP_num)
-genotypes<- mutate(genotypes, An_ID)
+
 
 genotypes<- select(genotypes, "An_ID", "chip", "SNP_num")
 
