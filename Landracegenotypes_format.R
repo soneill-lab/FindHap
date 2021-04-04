@@ -59,7 +59,7 @@ for(i in 1:length(Genotypes)){
 
 Genotypes_new<- Genotypes 
 genotypes<- mutate(genotypes,Genotypes_new)
-genotypes<- select(genotypes,"Animal_ID", "chip", "SNP_num", "Genotypes_new")
+genotypes<- select(genotypes, "genotypes_numeric_idx", "chip", "SNP_num", "Genotypes_new")
 names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
 
 genotypes$Animal_ID<- (genotypes$Animal_ID +10000000)
