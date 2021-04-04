@@ -55,6 +55,7 @@ Landracepedigree.file <- numberify(pedigree.file)
 
 Landracepedigree.file<- Landracepedigree.file$ped
 
+Animal_ID_ped_num<- Landracepedigree.file$Animal_ID
 
 Landracepedigree.file$Animal_ID<- (Landracepedigree.file$Animal_ID + 10000000)
 
