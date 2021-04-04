@@ -63,7 +63,7 @@ genotypes<- mutate(genotypes,Genotypes_new)
 genotypes<- select(genotypes, "Animal_ID", "chip", "SNP_num", "Genotypes_new")
 names(genotypes)<- c("Animal_ID", "chip", "SNP_num", "Genotypes")
 
-genotypes$Animal_ID<- (genotypes$Animal_ID +10000000)
+
 
 # Added by Jiang
 # Pad a String with Whitespace
