@@ -28,7 +28,7 @@ chromosome.data<- mutate(chromosome.data, location)
 ordered_idx = order(chromosome.data[ ,"chrome"], chromosome.data[ ,"location"] )
 
 #Added by Jiang
-ordered_idx = ordered_idx[1:49977]
+ordered_idx = ordered_idx[1:19474]
 
 chromosome.data<- chromosome.data[ordered_idx,]
 
