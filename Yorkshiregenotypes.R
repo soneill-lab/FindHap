@@ -27,7 +27,7 @@ Genotypes<- pull(genotypes, Genotypes)
 
 
 chip<- 1 
-SNP_num<- 49977
+SNP_num<- 19474
 
 genotypes<- select(genotypes,"Genotypes")
 
