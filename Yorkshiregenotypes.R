@@ -10,8 +10,8 @@ names(genotypes)<- c("An_ID", "Genotypes")
 genotypes_Animal_ID<- genotypes$An_ID
 remove_genotypes_idx<- which(genotypes_Animal_ID%in% Animal_ID_ped==FALSE)
 
-genotypes_Animal_ID<- genotypes_Animal_ID[- Ygenotype_remove_idx] 
-genotypes<- genotypes[-c(Ygenotype_remove_idx),]
+genotypes_Animal_ID<- genotypes_Animal_ID[- remove_genotypes_idx] 
+genotypes<- genotypes[-c(remove_genotypes_idx),]
 
 ped= data.frame(numeric= c(Animal_ID_ped_char), character=c(Animal_ID_ped_num))
 gen= c(genotypes_Animal_ID_char)
