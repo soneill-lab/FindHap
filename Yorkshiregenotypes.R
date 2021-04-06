@@ -13,7 +13,7 @@ remove_genotypes_idx<- which(genotypes_Animal_ID%in% Animal_ID_ped_char==FALSE)
 genotypes_Animal_ID<- genotypes_Animal_ID[- remove_genotypes_idx] 
 genotypes<- genotypes[-c(remove_genotypes_idx),]
 
-ped= data.frame(numeric= c(Animal_ID_ped_char), character=c(Animal_ID_ped_num))
+ped= data.frame(character= c(Animal_ID_ped_char), numeric=c(Animal_ID_ped_num))
 gen= c(genotypes_Animal_ID)
 
 h= hash(ped$character, ped$numeric)
