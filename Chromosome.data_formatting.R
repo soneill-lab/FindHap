@@ -38,16 +38,8 @@ overall<- (1:length(ordered_idx))
 
 #Add overall column
 chromosome.data<- mutate(chromosome.data, overall)                                   
-
-#Alter SNPname column appropriately 
-SNPname<- "Marker"
-chromosome.data<- select(chromosome.data, "chrome", "location", "overall")
-chromosome.data<- mutate(chromosome.data, SNPname)
 chromosome.data<- select(chromosome.data, "SNPname", "chrome", "location", "overall")
 
-SNPsequence<- 1:nrow(chromosome.data)
-chromosome.data$SNPname<- paste(chromosome.data$SNPname,SNPsequence, sep="")
- 
 
 
 #Create chip1 as a variable 
