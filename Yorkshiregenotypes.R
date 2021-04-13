@@ -4,7 +4,7 @@ library(dplyr)
 library(data.table)
 
 
-genotypes<- fread("genotypes.txt")
+genotypes<- fread("Ygenotypes.txt")
 names(genotypes)<- c("An_ID", "Genotypes")
 
 genotypes_Animal_ID<- genotypes$An_ID
