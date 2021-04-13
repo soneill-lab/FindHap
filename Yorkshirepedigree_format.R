@@ -19,7 +19,7 @@ library(dplyr)
 
         
 #Yorkshire Pedigree file must be ordered in ascending order of birthday; oldest to youngest animal;
-pedigree.file<- read.table("pedigree.file") 
+pedigree.file<- read.table("Ypedigree.file") 
 
 #Rename columns appropriately with:
 colnames(pedigree.file)<- c("Animal_ID", "Sire", "Dam", "Birthdate", "Sex") 
