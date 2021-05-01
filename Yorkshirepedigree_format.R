@@ -2,8 +2,7 @@
 #Before running FindHap, we must make sure that our data formats align appropriately using R. 
 
 #Yorkshire Pedigree File file format conversion
-#FindHap is used to impute missing genotypes in the genotype files for 
-and Yorkshire swine breeds 
+#FindHap is used to impute missing genotypes in the genotype files 
 #Before running FindHap, we must make sure that our data formats align appropriately using R. 
 
 #Yorkshire Pedigree File file format conversion
