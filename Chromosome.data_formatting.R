@@ -38,10 +38,6 @@ chromosome.data$location=as.numeric(chromosome.data$location)
 #Make chrome a variable
 chrome<- chromosome.data$chrome
 
-#Remove and add back proper location column
-chromosome.data<- select(chromosome.data, "SNPname", "chrome")
-chromosome.data<- mutate(chromosome.data, location)
-
 #Sort position and chromosome number in ascending order
 ordered_idx = order(chromosome.data[ ,"chrome"], chromosome.data[ ,"location"] )
 
