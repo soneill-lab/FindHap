@@ -23,6 +23,9 @@ which(is.na(location))
 #Create index of NA values to modify in location column
 modify_idx<- which(is.na(location))
 
+#Obtain list of values given by modify_idx 
+chromosome.data$location[modify_idx]
+
 #Make chrome a variable
 chrome<- chromosome.data$chrome
 
