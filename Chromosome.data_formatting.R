@@ -17,6 +17,12 @@ colnames(chromosome.data)<- c("chrome", "SNPname", "location")
 location<- pull(chromosome.data, location)
 location=as.numeric(location)
 
+#locate NA values 
+which(is.na(location))
+
+#Create index of NA values to modify in location column
+modify_idx<- which(is.na(location))
+
 #Make chrome a variable
 chrome<- chromosome.data$chrome
 
