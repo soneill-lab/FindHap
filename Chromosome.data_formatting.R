@@ -12,7 +12,7 @@ chromosome.data<- read.table("chromosome.data")
 
 #Specify column names 
 colnames(chromosome.data)<- c("chrome", "SNPname", "location")
-
+#########################################################################################
 #Make "location" numeric 
 location<- pull(chromosome.data, location)
 location=as.numeric(location)
@@ -25,6 +25,15 @@ modify_idx<- which(is.na(location))
 
 #Obtain list of values given by modify_idx 
 chromosome.data$location[modify_idx]
+
+#Modify the chromosome.data$location index 
+chromosome.data$location[modify_idx]<- c("7864132", "124569745", "19958367", "6730949", "41716843", "95890927", "31645297", "116633299", "142748807", "34964064", "56619202", "58737215", "172601926", "32309148", "150861922", "62238854", "16833521", "33400099", "134241213")
+
+#Make chromosome.data location column numeric 
+chromosome.data$location=as.numeric(chromosome.data$location)
+########################################################################################
+
+##The above code should make the location column numeric without soliciting any NA values 
 
 #Make chrome a variable
 chrome<- chromosome.data$chrome
