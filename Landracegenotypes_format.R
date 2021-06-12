@@ -9,7 +9,7 @@ genotypes<- fread("genotypes.txt")
 names(genotypes)<- c("An_ID", "Genotypes")
 
 genotypes_Animal_ID<- genotypes$An_ID
-remove_genotypes_idx<- which(genotypes_Animal_ID%in% Animal_ID_ped==FALSE)
+remove_genotypes_idx<- which(genotypes_Animal_ID%in% Animal_ID_ped_char=FALSE)
 
 genotypes_Animal_ID<- genotypes_Animal_ID[- remove_genotypes_idx] 
 genotypes<- genotypes[-c(remove_genotypes_idx),]
